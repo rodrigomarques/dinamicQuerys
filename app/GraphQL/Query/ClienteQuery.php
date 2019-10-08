@@ -18,10 +18,10 @@ class ClienteQuery extends BaseQuery
     public function args() : array
     {
         return [
-            'cpf' => [
-                'name' => 'cpf',
+            'email' => [
+                'name' => 'email',
                 'type' => Type::string(),
-                'description' => 'Cpf',
+                'description' => 'email',
             ],
         ];
     }
@@ -39,12 +39,9 @@ class ClienteQuery extends BaseQuery
 
     {
         $fields = $getSelectFields();
-        $select = $fields->getSelect();
-        $with = $fields->getRelations();
-        
-        $cpf = isset($args["cpf"])?$args["cpf"]:"";
+        $email = isset($args["email"])?$args["email"]:"";
 
         $service = new ClienteService();
-        return $service->getCliente(['cpf' => $cpf], $fields);
+        return $service->getCliente(['email' => $email], $fields);
     }
 }
